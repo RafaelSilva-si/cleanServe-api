@@ -35,7 +35,7 @@ export class ClientsService {
     let client = await this.repo.findOne(id);
     if ( !client ) throw new UserNotExistException();
     
-    Object.apply(client, updateClientDto);
+    Object.assign(client, updateClientDto);
 
     return await this.repo.save(client);
   }
