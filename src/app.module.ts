@@ -16,16 +16,18 @@ import { Budget } from './budget/entities/budget.entity';
 import { BudgetServiceEntity } from './budget/entities/budget-service.entity';
 import { ServiceOrderModule } from './service-order/serviceOrder.module';
 import { ServiceOrder } from './service-order/entities/service-order.entity';
+import { ConfigModule } from '@nestjs/config';
 
 @Module({
   imports: [
+    ConfigModule.forRoot(),
     TypeOrmModule.forRoot({
       type: 'postgres',
-      host: 'localhost',
-      port: 5432,
-      username: 'postgres',
-      password: 'rafa1234',
-      database: 'postgres',
+      host: process.env.DB_HOST,
+      port: parseInt(process.env.DB_PORT, 10),
+      username: process.env.DB_USERNAME,
+      password: process.env.DB_PASSWORD,
+      database: process.env.DB_DATABASE,
       entities: [
         User,
         Client,
