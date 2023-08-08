@@ -1,29 +1,29 @@
-import { Budget } from "src/budget/entities/budget.entity";
-import { Column, Entity, ManyToOne, OneToMany, PrimaryGeneratedColumn } from "typeorm";
+import { Budget } from 'src/budget/entities/budget.entity';
+import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
 
-@Entity({name: 'serviceOrder'})
+@Entity({ name: 'serviceOrder' })
 export class ServiceOrder {
-    @PrimaryGeneratedColumn()
-    id: number;
+  @PrimaryGeneratedColumn()
+  id: number;
 
-    @Column({unique: true})
-    code: string;
+  @Column({ unique: true })
+  code: string;
 
-    @Column()
-    budgetId: string;
+  @Column()
+  budgetId: string;
 
-    @Column()
-    dateIni: Date;
+  @Column()
+  dateIni: Date;
 
-    @Column()
-    dateEnd: Date;
+  @Column()
+  dateEnd: Date;
 
-    @Column()
-    status: string;
+  @Column()
+  status: string;
 
-    @Column()
-    obs: string;
+  @Column()
+  obs: string;
 
-    @ManyToOne(() => Budget, budget => budget.budget, { nullable: true })
-    budget: Budget;
+  @ManyToOne(() => Budget, (budget) => budget.budget, { nullable: true })
+  budget: Budget;
 }

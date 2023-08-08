@@ -1,47 +1,58 @@
-import { Client } from "src/clients/entities/client.entity";
-import { Column, Entity, JoinTable, ManyToMany, ManyToOne, OneToMany, OneToOne, PrimaryGeneratedColumn } from "typeorm";
-import { BudgetServiceEntity } from "./budget-service.entity";
+import { Client } from 'src/clients/entities/client.entity';
+import {
+  Column,
+  Entity,
+  JoinTable,
+  ManyToOne,
+  OneToMany,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
+import { BudgetServiceEntity } from './budget-service.entity';
 
 @Entity()
 export class Budget {
-    @PrimaryGeneratedColumn()
-    id: number;
-    
-    @Column()
-    code: number;
+  @PrimaryGeneratedColumn()
+  id: number;
 
-    @Column()
-    discount: number;
+  @Column()
+  code: number;
 
-    @Column()
-    price: number;
+  @Column()
+  discount: number;
 
-    @Column()
-    clientId: string;
+  @Column()
+  price: number;
 
-    @ManyToOne(() => Client, client => client.id, { nullable: true })
-    @JoinTable()
-    client: Client;
+  @Column()
+  clientId: string;
 
-    @Column()
-    street: string;
+  @ManyToOne(() => Client, (client) => client.id, { nullable: true })
+  @JoinTable()
+  client: Client;
 
-    @Column()
-    state: string;
+  @Column()
+  street: string;
 
-    @Column()
-    zipCode: string;
+  @Column()
+  state: string;
 
-    @Column()
-    city: string;
+  @Column()
+  zipCode: string;
 
-    @Column()
-    addressDescription: string;
+  @Column()
+  city: string;
 
-    @Column({nullable: true})
-    status: string;
+  @Column()
+  addressDescription: string;
 
-    @OneToMany(() => BudgetServiceEntity, budgetService => budgetService.budget, { cascade: true })
-    @JoinTable()
-    budget: BudgetServiceEntity[];
+  @Column({ nullable: true })
+  status: string;
+
+  @OneToMany(
+    () => BudgetServiceEntity,
+    (budgetService) => budgetService.budget,
+    { cascade: true },
+  )
+  @JoinTable()
+  budget: BudgetServiceEntity[];
 }

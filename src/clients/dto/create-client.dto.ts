@@ -1,36 +1,36 @@
-import { IsEmail, IsNumber, IsString } from "class-validator";
+import { IsEmail, IsNumber, IsString } from 'class-validator';
 
 export class CreateClientDto {
-    @IsString()
-    name: string;
+  @IsString()
+  name: string;
 
-    @IsString()
-    CPF: string;
+  @IsString()
+  CPF: string;
 
-    @IsEmail()
-    email: string;
+  @IsEmail()
+  email: string;
 
-    @IsString()
-    phone: string;
+  @IsString()
+  phone: string;
 
-    @IsString()
-    street: string;
+  @IsString()
+  street: string;
 
-    @IsString()
-    state: string;
+  @IsString()
+  state: string;
 
-    @IsString()
-    zipCode: string;
+  @IsString()
+  zipCode: string;
 
-    @IsString()
-    city: string;
+  @IsString()
+  city: string;
 
-    @IsString()
-    addressDescription: string;
+  @IsString()
+  addressDescription: string;
 
-    @IsNumber()
-    status: number;
+  @IsNumber()
+  status: number;
 
-    @IsString()
-    createdAt: string;
+  @IsString()
+  createdAt: string;
 }

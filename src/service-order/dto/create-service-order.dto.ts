@@ -1,21 +1,21 @@
-import { IsString } from "class-validator";
+import { IsString } from 'class-validator';
 
 export class CreateServiceOrderDto {
-    @IsString()
-    code: number;
+  @IsString()
+  code: number;
 
-    @IsString()
-    budgetId: string;
+  @IsString()
+  budgetId: string;
 
-    @IsString()
-    dateIni: string;
+  @IsString()
+  dateIni: string;
 
-    @IsString()
-    dateEnd: string;
+  @IsString()
+  dateEnd: string;
 
-    @IsString()
-    status: string;
+  @IsString()
+  status: string;
 
-    @IsString()
-    obs: string;
+  @IsString()
+  obs: string;
 }

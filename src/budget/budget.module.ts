@@ -10,6 +10,8 @@ import { Client } from 'src/clients/entities/client.entity';
 @Module({
   controllers: [BudgetController],
   providers: [BudgetService],
-  imports: [TypeOrmModule.forFeature([Budget, BudgetServiceEntity, Service, Client])],
+  imports: [
+    TypeOrmModule.forFeature([Budget, BudgetServiceEntity, Service, Client]),
+  ],
 })
 export class BudgetModule {}

@@ -1,22 +1,22 @@
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()
 export class Service {
-    @PrimaryGeneratedColumn()
-    id: number;
+  @PrimaryGeneratedColumn()
+  id: number;
 
-    @Column({unique: true})
-    code: string;
-    
-    @Column()
-    name: string;
+  @Column({ unique: true })
+  code: string;
 
-    @Column()
-    measurementUnit: number;
+  @Column()
+  name: string;
 
-    @Column()
-    measurementPrice: number;
+  @Column()
+  measurementUnit: number;
 
-    @Column()
-    status: number;
+  @Column()
+  measurementPrice: number;
+
+  @Column()
+  status: number;
 }

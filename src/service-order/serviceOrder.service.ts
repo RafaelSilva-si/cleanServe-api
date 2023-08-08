@@ -13,13 +13,15 @@ import { BudgetNotExistRelationException } from 'src/exceptions/budget-not-exist
 export class ServiceOrderService {
   constructor(
     @InjectRepository(ServiceOrder) private repo: Repository<ServiceOrder>,
-    @InjectRepository(Budget) private repoBudget: Repository<Budget>
-  ){}
-  
+    @InjectRepository(Budget) private repoBudget: Repository<Budget>,
+  ) {}
+
   async create(createServiceOrderDto: CreateServiceOrderDto) {
     try {
-      const budget = await this.repoBudget.findOne({where: {id: createServiceOrderDto.budgetId}});
-      if ( !budget ) throw new BudgetNotExistRelationException();
+      const budget = await this.repoBudget.findOne({
+        where: { id: createServiceOrderDto.budgetId },
+      });
+      if (!budget) throw new BudgetNotExistRelationException();
 
       const serviceOrder = new ServiceOrder();
       serviceOrder.budget = budget;
@@ -28,16 +30,31 @@ export class ServiceOrderService {
 
       return await this.repo.save(serviceOrder);
     } catch (error) {
-      throw new ErrorException(error)
+      throw new ErrorException(error);
     }
   }
 
   findAll() {
-    return this.repo.find({relations: ['budget', 'budget.budget', 'budget.budget.service', 'budget.client']})
+    return this.repo.find({
+      relations: [
+        'budget',
+        'budget.budget',
+        'budget.budget.service',
+        'budget.client',
+      ],
+    });
   }
 
   findOne(id: number) {
-    return this.repo.find({relations: ['budget', 'budget.budget', 'budget.budget.service', 'budget.client'], where: {id}})
+    return this.repo.find({
+      relations: [
+        'budget',
+        'budget.budget',
+        'budget.budget.service',
+        'budget.client',
+      ],
+      where: { id },
+    });
   }
 
   async update(id: number, updateServiceOrderDto: UpdateServiceOrderDto) {
@@ -51,5 +68,4 @@ export class ServiceOrderService {
       throw new Error('Erro ao criar Ordem de serviço.');
     }
   }
-
 }

@@ -12,12 +12,12 @@ export class UserService {
   async create(createUserDto: CreateUserDto): Promise<User> {
     const data = this.repo.create({
       ...createUserDto,
-      password: await bcrypt.hash(createUserDto.password, 10)
-    })
+      password: await bcrypt.hash(createUserDto.password, 10),
+    });
     return this.repo.save(data);
   }
 
   findByEmail(email: string) {
-    return this.repo.findOne({where: {email}})
+    return this.repo.findOne({ where: { email } });
   }
 }

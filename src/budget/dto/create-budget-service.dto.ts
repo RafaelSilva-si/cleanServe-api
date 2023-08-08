@@ -1,14 +1,13 @@
-import { IsNumber, IsObject, IsString } from "class-validator";
-import { Budget } from "../entities/budget.entity";
-import { Service } from "src/services/entities/service.entity";
+import { IsObject, IsString } from 'class-validator';
+import { Budget } from '../entities/budget.entity';
 
 export class CreateBudgetServiceDto {
-    @IsObject()
-    budget: Budget
+  @IsObject()
+  budget: Budget;
 
-    @IsObject()
-    serviceId: string
+  @IsObject()
+  serviceId: string;
 
-    @IsString()
-    qtd: string
+  @IsString()
+  qtd: string;
 }

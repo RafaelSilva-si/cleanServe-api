@@ -1,22 +1,28 @@
-import { Service } from "src/services/entities/service.entity";
-import { Column, Entity, JoinTable, ManyToMany, ManyToOne, OneToMany, OneToOne, PrimaryGeneratedColumn } from "typeorm";
-import { Budget } from "./budget.entity";
+import { Service } from 'src/services/entities/service.entity';
+import {
+  Column,
+  Entity,
+  JoinTable,
+  ManyToOne,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
+import { Budget } from './budget.entity';
 
-@Entity({name: 'budgetService'})
+@Entity({ name: 'budgetService' })
 export class BudgetServiceEntity {
-    @PrimaryGeneratedColumn()
-    id: number;
-    
-    @Column()
-    qtd: string;
+  @PrimaryGeneratedColumn()
+  id: number;
 
-    @Column()
-    budgetId: string;
+  @Column()
+  qtd: string;
 
-    @ManyToOne(() => Service, service => service.id, { nullable: true })
-    service: Service;
+  @Column()
+  budgetId: string;
 
-    @ManyToOne(() => Budget, budget => budget.budget, { nullable: true })
-    @JoinTable()
-    budget: Budget;
+  @ManyToOne(() => Service, (service) => service.id, { nullable: true })
+  service: Service;
+
+  @ManyToOne(() => Budget, (budget) => budget.budget, { nullable: true })
+  @JoinTable()
+  budget: Budget;
 }

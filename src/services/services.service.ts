@@ -9,11 +9,13 @@ import { ServiceNotExistException } from 'src/exceptions/service-not-exist.excep
 
 @Injectable()
 export class ServicesService {
-  constructor(@InjectRepository(Service) private repo: Repository<Service>){}
+  constructor(@InjectRepository(Service) private repo: Repository<Service>) {}
 
   async create(createServiceDto: CreateServiceDto) {
-    const exist = await this.repo.findOne({where: {code: createServiceDto.code}})
-    if ( exist ) throw new ServiceDuplicatedException();
+    const exist = await this.repo.findOne({
+      where: { code: createServiceDto.code },
+    });
+    if (exist) throw new ServiceDuplicatedException();
 
     return this.repo.save(createServiceDto);
   }
@@ -27,16 +29,16 @@ export class ServicesService {
   }
 
   async update(id: number, updateServiceDto: UpdateServiceDto) {
-    let service = await this.repo.findOne(id);
-    if ( !service ) throw new ServiceNotExistException()
+    const service = await this.repo.findOne(id);
+    if (!service) throw new ServiceNotExistException();
 
     Object.assign(service, updateServiceDto);
     return await this.repo.save(service);
   }
 
   async remove(id: number) {
-    let service = await this.repo.findOne(id);
-    if ( !service ) throw new ServiceNotExistException()
+    const service = await this.repo.findOne(id);
+    if (!service) throw new ServiceNotExistException();
 
     return this.repo.remove(service);
   }

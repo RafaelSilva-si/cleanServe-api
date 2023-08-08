@@ -9,15 +9,17 @@ import { UserNotExistException } from 'src/exceptions/user-not-exist.exception';
 
 @Injectable()
 export class ClientsService {
-  constructor(@InjectRepository(Client) private repo: Repository<Client>){}
+  constructor(@InjectRepository(Client) private repo: Repository<Client>) {}
 
   async create(createClientDto: CreateClientDto) {
-    const existClient = await this.repo.findOne({where: {CPF: createClientDto.CPF}});
-    if ( existClient ) throw new CpfDuplicatedException();
+    const existClient = await this.repo.findOne({
+      where: { CPF: createClientDto.CPF },
+    });
+    if (existClient) throw new CpfDuplicatedException();
 
     const data = {
       ...createClientDto,
-      createdAt: new Date()
+      createdAt: new Date(),
     };
 
     return await this.repo.save(data);
@@ -32,9 +34,9 @@ export class ClientsService {
   }
 
   async update(id: number, updateClientDto: UpdateClientDto) {
-    let client = await this.repo.findOne(id);
-    if ( !client ) throw new UserNotExistException();
-    
+    const client = await this.repo.findOne(id);
+    if (!client) throw new UserNotExistException();
+
     Object.assign(client, updateClientDto);
 
     return await this.repo.save(client);
@@ -42,7 +44,7 @@ export class ClientsService {
 
   async remove(id: number) {
     const client = await this.repo.findOne(id);
-    if ( !client ) throw new UserNotExistException();
+    if (!client) throw new UserNotExistException();
 
     return this.repo.remove(client);
   }
