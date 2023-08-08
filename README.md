@@ -1,5 +1,7 @@
 # API CleanService - Documentação
 
+> Status: Em desenvolvimento ⚙
+
 ## Visão Geral
 Bem-vindo à documentação da API do Software de Higienização CleanService. Essa API é uma aplicação web que permite o gerenciamento eficiente de clientes, orçamentos e agendamentos para negócios de higienização. A aplicação é composta por um backend desenvolvido em Nest.js, um framework em Node.js, e um frontend desenvolvido em React.js. Os dados são armazenados de forma segura em um banco de dados PostgreSQL.
 
@@ -110,3 +112,11 @@ Para garantir a segurança e privacidade dos dados, a API utiliza autenticação
 
 ### Formato de Respostas
 A API retorna as respostas em formato JSON, e em caso de erros, são fornecidos códigos de status HTTP apropriados, juntamente com mensagens descritivas.
+
+## Conclusão
+
+Agradeço por explorar a documentação da API CleanService! Essa API foi desenvolvida como um projeto didático e de estudo para demonstrar conceitos de construção de APIs usando o framework Nest.js. Ela oferece funcionalidades básicas de gerenciamento de clientes, orçamentos e agendamentos, usando um banco de dados PostgreSQL para armazenamento seguro. Sinta-se à vontade para explorar os endpoints disponíveis e experimentar as diferentes operações. Espero que essa documentação tenha sido útil para você aprender e praticar. Se tiver alguma dúvida ou feedback, não hesite em entrar em contato. Obrigado por usar a API CleanService como parte do seu aprendizado!
+
+![ThankYouGIF](https://github.com/RafaelSilva-si/cleanServe-api/assets/77937182/c638d23d-74a6-40d8-a220-d3c8155b1204)
+
+
